@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>用户登录界面</title>
+            <link th:href="@{/login/css/bootstrap.min.css}" rel="stylesheet">
+            <link th:href="@{/login/css/signin.css}" rel="stylesheet">
+        </head>
+    <body class="text-center">
+        <form class="form-signin" th:action="@{/userlogin}" th:method="post" >
+    <h1 class="h3 mb-3 font-weight-normal">请登录</h1>
+                <input type="text" name="name" class="form-control" placeholder="用户名" required="" autofocus="">
+                <input type="password" name="pwd" class="form-control" placeholder="密码" required="">
+            <div >
+                <label>
+                    <input type="checkbox" name="rememberme"> 记住我
+                </label>
+            </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" >登录</button>
+                <p class="mt-5 mb-3 text-muted">Copyright© 2020-2021</p>
+            </form>
+   </body>
+    </html>

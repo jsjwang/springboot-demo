@@ -2,6 +2,7 @@ package com.mmy.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,8 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }*/
 
 
-    /*
-        jdbc验证
+
+        //jdbc验证
     @Autowired
     private DataSource dataSource;
     @Override
@@ -49,5 +50,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .usersByUsernameQuery(userSql)
                 .authoritiesByUsernameQuery(authoritySQL);
-    }*/
+    }
+    //自定义授权
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+            .antMatchers("/").permitAll()
+            .antMatchers("/login/**").permitAll()
+            .antMatchers("/detail/common/**").hasRole("common")
+            .antMatchers("/detail/vip/**").hasRole("vip")
+            .anyRequest().authenticated();
+
+            //自定义用户登录控制
+            http.formLogin()
+                .loginPage("/userlogin").permitAll()
+                .usernameParameter("name").passwordParameter("pwd")
+                .defaultSuccessUrl("/")
+                .failureUrl("/userlogin?error");
+            //自定义用户退出只需要定义路径，不需要额外编写控制器
+            http.logout().logoutUrl("/mylogout")
+                    .logoutSuccessUrl("/userlogin");
+            /*定制Remember-me功能
+            * security默认提供的记住我功能的name是remember-me
+            * */
+            http.rememberMe()
+                    .rememberMeParameter("rememberme")
+                    .tokenValiditySeconds(200);
+
+
+    }
 }
