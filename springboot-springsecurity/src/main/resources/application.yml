@@ -1,0 +1,31 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: security-server
+  thymeleaf:
+    encoding: utf-8
+    mode: HTML
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC
+    username: root
+    password: root
+
+
+
+      #手动明确指定用户名，密码
+      #security:
+      #  user:
+    #    name: admin
+    #    password: admin
+    #自定义模板路径
+    #prefix: classpath:/templates/
+    #suffix: .html
+    #表示所有访问都经过静态资源
+  #mvc:
+   # static-path-pattern: /**
+    #设置静态资源的根路径
+  #resources:
+   # static-locations: classpath:/static/
