@@ -1,5 +1,6 @@
 package com.mmy.config;
 
+import com.mmy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.Connection;
 
@@ -37,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         //jdbc验证
-    @Autowired
+   /* @Autowired
     private DataSource dataSource;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -50,7 +52,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .usersByUsernameQuery(userSql)
                 .authoritiesByUsernameQuery(authoritySQL);
+    }*/
+
+    //使用userDetailService进行验证登录
+    @Resource
+    private UserService userService;
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+        auth.userDetailsService(userService).passwordEncoder(encoder);
     }
+
     //自定义授权
     @Override
     protected void configure(HttpSecurity http) throws Exception {
