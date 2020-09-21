@@ -8,17 +8,23 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springboot-springsecurity" />
+        <module name="springboot-logo_properties" />
+        <module name="springboot_thymeleaf_swagger" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="springboot-demo" target="1.8" />
+      <module name="springboot-logo_properties" target="1.8" />
       <module name="springboot-springsecurity" target="1.8" />
+      <module name="springboot_thymeleaf_swagger" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="springboot-demo" options="-parameters" />
+      <module name="springboot-logo_properties" options="-parameters" />
       <module name="springboot-springsecurity" options="-parameters" />
+      <module name="springboot_thymeleaf_swagger" options="-parameters" />
     </option>
   </component>
 </project>

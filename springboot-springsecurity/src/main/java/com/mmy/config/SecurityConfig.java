@@ -21,6 +21,20 @@ import java.sql.Connection;
  **/
 @EnableWebSecurity  //开启mvc security安全支持
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    /**
+     * @EnableWebSecurity和@Configuration注解一起使用在WebSecurityConfigurerAdapter
+     * 类型上或继承了该类的子类上，由于@EnableWebSecurity已经集成了@Configuration,因此可以
+     * 只使用@EnableWebSecurity一个注解
+     * @EnableWebSecurity中的重要组成注解:@Import  @Configruation @EnableGlobalAuthentication
+     * @EnableGlobalAuthentication 又由@Import注解导入了AuthenticationConfiguration类
+     * AuthenticationConfiguration 可以创建一个AuthenticationManager，可以轻松的实现是以内存
+     * 的方式or jdbc or userDetailsService的方式进行验证
+     *
+     */
+
+
+
+
 
     /*使用内存进行身份验证
 

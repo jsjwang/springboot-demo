@@ -1,0 +1,11 @@
+#logging:
+ # config: classpath:logback.xml
+  #level:
+   # com.my: trace
+
+  #指定项目的配置文件
+
+spring:
+  profiles:
+    active:
+      - dev

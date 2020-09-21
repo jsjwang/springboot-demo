@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/springboot-demo.iml" filepath="$PROJECT_DIR$/springboot-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-logo_properties/springboot-logo_properties.iml" filepath="$PROJECT_DIR$/springboot-logo_properties/springboot-logo_properties.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-springsecurity/springboot-springsecurity.iml" filepath="$PROJECT_DIR$/springboot-springsecurity/springboot-springsecurity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_thymeleaf_swagger/springboot_thymeleaf_swagger.iml" filepath="$PROJECT_DIR$/springboot_thymeleaf_swagger/springboot_thymeleaf_swagger.iml" />
     </modules>
   </component>
 </project>
