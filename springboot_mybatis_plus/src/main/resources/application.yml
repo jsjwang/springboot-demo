@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: root
+
+#配置thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/ #自定义模板位置，springboot的默认模板文件就在templates下
+    suffix: .html
+    cache: false  #关闭thymeleaf缓存
+
+#mybatis配置
+mybatis:
+    #指定设置别名的包
+  type-aliases-package: com.my.domain
+  #开启驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
+  #sql文件所在的位置
+  mapper-locations: classpath:mapper/*.xml
+
+
+
+
